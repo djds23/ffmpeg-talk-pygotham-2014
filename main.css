@@ -10,17 +10,12 @@ p {
     font-weight: normal;
     margin-bottom: 0.3em;
     margin-top: 0.3em;
-    text-align: left;
+    text-align: center;
 }
 
 pre {
     text-align: left;
 }
-
-.long-scripts {
-    font-size: 2em;
-    margin-left: -80%;
-        }
 
 h1, h2, h3, h4 {
     font-weight: normal;
