@@ -14,6 +14,11 @@ By Dean Silfen
 
 ----
 
+Lossy vs Lossless
+=================
+
+----
+
 Group of Picture Compression
 ============================
 
@@ -21,12 +26,14 @@ Make smaller videos by recycling data from past and future frames.
     
     - Divide the video into 3 different types of frames.
         
-        - *I*-frames (intra or key frames) contain all data needed to recreate an image. An I-frame stands alone as a complete image with no data missing.  
+        - *I*-frames (key frames) contain all data needed to recreate an image. An I-frame stands alone as a complete image with no data missing.
 
-        - *P*-frames (predicted frames) reference other P or I frames that come before them. 
+        - *P*-frames (predicted frames) are  partial images that *reference* other P or I frames before them to create full images. 
 
-        - *B* frames (bi-directional frames) reference other P or I frames within either direction of this frame. 
+        - *B* frames (bi-directional frames) partial images that draw data from the P and I frames in either direction to make them whole 
 
+    - *P* & *B* frames are both versions of interframe compression while *I* frames are versions of intraframe compression
+      
 ----
 
 Which codec to chose?
@@ -63,7 +70,6 @@ Basic input:
 Your typical script looks like this:
 
 
-
 ``ffmpeg -i input.mp4 -c:a copy -c:v copy output.mp4``
 
 
@@ -84,6 +90,8 @@ Basic input part 2:
     -frames:v (limit number of frames)
     -an (no audio)
     -vn (no video)
+    -y (overwrite existing video without prompts)
+    -pix_fmt (used to accomadate colorspace)
 
 
 ----
@@ -226,6 +234,8 @@ Fun use cases
 
 ``-vf scale:612:612:flags=lanczos`` for instagram!
 
+Recoding video from a webcam with ``-i /dev/video0``
+
 Create a streaming server with ffserver! (Linux only!)
 
 ----
@@ -267,3 +277,5 @@ Links/References
 -http://avisynth.org.ru/yadif/yadif.html
 
 -http://documentation.apple.com/en/finalcutpro/usermanual/index.html#chapter=C%26section=12%26tasks=true
+
+-http://www.xiph.org/video/vid1.shtml
