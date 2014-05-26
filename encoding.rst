@@ -12,6 +12,15 @@ A Primer on FFmpeg and Video Compression
 By Dean Silfen
 --------------
 
+
+Github_ & LinkedIn_
+
+
+.. _Github: https://github.com/djds23
+
+.. _LinkedIn: https://www.linkedin.com/pub/dean-silfen/50/327/339 
+
+
 ----
 
 Lossy vs Lossless
@@ -51,7 +60,9 @@ Tools?
 
 The swiss army knife of digital video!
 
-FFmpeg: https://www.ffmpeg.org/
+FFmpeg_ 
+
+.. _FFmpeg: https://www.ffmpeg.org/
 
 ----
 
@@ -140,7 +151,11 @@ Trust in the presets! They are there for a reason!
 
 Take a look at them here:
 
-https://trac.ffmpeg.org/wiki/x264EncodingGuide
+`FFmpeg X264 Encoding Guide`__
+
+.. _Guide: https://trac.ffmpeg.org/wiki/x264EncodingGuide
+
+__ Guide_
 
 ``-presets (option)`` will set up your encoding preset
 
@@ -223,7 +238,9 @@ Experiment!
 
 Inspect your videos using a tool like Mediainfo, and see what your presets did, then tweak accordingly.
 
-http://mediaarea.net/en/MediaInfo
+Mediainfo_
+
+.. _Mediainfo: http://mediaarea.net/en/MediaInfo
 
 ----
 
