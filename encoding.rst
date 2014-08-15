@@ -268,13 +268,28 @@ What is MoviePy exactly and what can I do with it?
 
 ----
 
+A note on Objects
+=================
+
+Moviepy has wonderful use of inheritence to provide many different features to all different kinds of clips.
+
+Every Clip object has access to the .fx, a start position, end position, subclip and duration(and more!).
+
+The base Clip object is then inherited by VideoClip, which serves as a base for ImageClip, TextClip and CompositeVideoClip.
+
+If you start crawling through the source you will see a really nice pattern of inheritence quickly pop up.
+
+This makes navigating the source code quite plesant.
+
+----
+
 Hello, World!
 
 .. code-block:: python
 
     >>> import moviepy.editor as moviepy
     >>> hello_world = TextClip('Hello, World!', fontsize=78, color='white', size=(1280,720))
-    >>> hello_world = hello_world.set_pos('center').set_duration(10)
+    >>> hello_world = hello_world.set_duration(10)
     >>> hello_world.write_videofile('hello_world.avi', fps=24)
 
 you can replace the last line with ``write_videofile('hello_world.webm', fps=24, codec=libvpx`` and it will still work!
@@ -446,6 +461,24 @@ A prettier Twitter example using PIL and moviepy, take a peak at the code here_!
 
 ----
 
+More great projects with Moviepy!
+=================================
+
+Videogrep_ reads subtitle files and uses moviepy to create "supercuts" of a certain word or grammer structure using the Pattern_ library
+
+Rinconcam_ uses Open_CV_ to track surfers on a pan/tilt/zoom camera, then chooses the best videos of the day and posts them on the Rinconcam website. Those videos are edited and exported using Moviepy_!
+
+.. _Open_CV: http://opencv.org/
+.. _Rinconcam: http://www.rinconcam.com
+.. _Pattern: http://www.clips.ua.ac.be/pattern
+.. _Videogrep: http://lav.io/2014/06/videogrep-automatic-supercuts-with-python/ 
+
+----
+
+.. image:: media/riconcam.webm
+
+----
+
 Advanced FFmpeg, Lets get CRF-ty
 ================================
 
@@ -477,6 +510,23 @@ Filters
 ``-vf`` applies a video filter
 
 ``scale:width:height:flags=lanczos`` for more effcient resizing
+
+You can also use Moviepy to resize clips!
+
+.. code-block:: python
+
+    #pass it a scaling factor
+    clip.resize(.5)
+
+    #width/height tuple
+    clip.resize((960,540))
+
+    #function that returns a valid reponse
+    clip.resize(lambda s: (s/2, s/2))
+
+    #height or width can be passed, will compute to conserve width/height ratio
+    clip.resize(width=540)
+
 
 ``yadif=0:-1:0`` yet another deinterlacing filter...
 
